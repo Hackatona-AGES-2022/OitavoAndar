@@ -112,6 +112,8 @@ if(key.toUpperCase()==='ENTER'){
       });
 
       if(acertou===true){
+       let x = document.getElementById('teste')
+       x?.scrollIntoView()
         //desce tela (felipe)
       }
       
