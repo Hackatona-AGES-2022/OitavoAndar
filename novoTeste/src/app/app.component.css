@@ -1,0 +1,68 @@
+.mainConten{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.parenTile{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.childTile{
+    height: 62px;
+    width: 62px;
+    border: 2px solid skyblue;
+    margin: 3px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    
+}
+.childCorrectTile{
+    height: 62px;
+    width: 62px;
+    border: 2px solid orange;
+    margin: 3px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background-color: orange;
+    
+}
+.childCorrectTileAndPosition{
+    height: 62px;
+    width: 62px;
+    border: 2px solid green;
+    margin: 3px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background-color: green;
+    
+}
+.keyboard{
+    width: 512px;
+    flex-wrap: wrap;
+    display: flex;
+
+}
+.keyboard button{
+    height: 40px;
+    width: 50px;
+    margin: 3px;
+    border: 1px solid skyblue;
+    border-radius: 0%;
+}
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: rgb(255, 0, 0);
+
+}

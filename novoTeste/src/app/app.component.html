@@ -1,0 +1,30 @@
+<h1>Seragay</h1>
+<div class="mainConten">
+  <div class="tiles">
+    <ng-container *ngFor="let item of boxes">
+      <div class="parenTile">
+        <ng-container *ngFor="let innerItem of item">
+          <div [ngClass]="innerItem.class != '' ? innerItem.class : 'childTile'">{{innerItem.key}}</div>
+        </ng-container>
+      </div>
+
+    </ng-container>
+  </div>
+  <div class="keyboard">
+    <ng-container *ngFor="let item of keyboard">
+      <ng-container *ngIf="(item.key!=='ENTER')&&(item.key!=='BACKSPACE')">
+        <Button (click)="handleChange(item.key)"  >{{item.key}}</Button>
+        
+      </ng-container>
+      <ng-container *ngIf="item.key==='ENTER'">
+        <Button style="width: 70px;" (click)="handleChange(item.key)" >{{item.key}}</Button>
+
+      </ng-container>
+      <ng-container *ngIf="item.key==='BACKSPACE'">
+        <Button style="width: 90px;" (click)="handleChange(item.key)" >{{item.key}}</Button>
+
+      </ng-container>      
+    </ng-container>
+  </div>
+</div>
+
