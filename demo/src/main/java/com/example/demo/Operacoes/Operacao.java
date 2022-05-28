@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -44,7 +45,8 @@ public class Operacao
             BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset());
             while((linha = br.readLine()) != null)
             {
-                String palavra = linha;
+                String palavraStr = linha;
+                String palavra = Normalizer.normalize(palavraStr, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
                 palavrasAceitas.add(palavra);
             }
         }

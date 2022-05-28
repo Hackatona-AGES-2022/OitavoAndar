@@ -5,17 +5,26 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'any'
 })
 
+
+
 export class WordService{
     apiURL : string | undefined;
     constructor(private http : HttpClient){
-        this.apiURL == 'http://localhost:8080/';
+        this.apiURL == 'http://localhost:8080';
     }
 
-    getColors(word : string){
+    vetorString : any;
+
+    async getColors(word : string){
         console.log(word)
         console.log('ENTREIIIIII')
-        this.http.get(`${this.apiURL}/palavras/${word}`)
-    }
+        this.vetorString = await this.http.get(`http://localhost:8080/palavras/${word}`).subscribe(data => {
+            console.log(data)
+        })
+        console.log(this.vetorString)
+        
+    } 
 }
+
 
 
