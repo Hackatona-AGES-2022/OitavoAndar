@@ -15,14 +15,10 @@ export class WordService{
 
     vetorString : any;
 
-    async getColors(word : string){
+    getColors(word : string){
         console.log(word)
         console.log('ENTREIIIIII')
-        this.vetorString = await this.http.get(`http://localhost:8080/palavras/${word}`).subscribe(data => {
-            console.log(data)
-        })
-        console.log(this.vetorString)
-        
+        return this.http.get<Array<String>>(`http://localhost:8080/palavras/${word}`)
     } 
 }
 

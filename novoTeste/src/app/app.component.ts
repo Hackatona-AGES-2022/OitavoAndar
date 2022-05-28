@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
   palavra = ""
 
   //pega digitacao
-  handleChange(key:any){
+  async handleChange(key:any){
     console.log({key})
     console.log(key.length)
     if(key.length===1){
@@ -82,25 +82,52 @@ export class AppComponent implements OnInit {
 if(key.toUpperCase()==='BACKSPACE'){
   if(this.currentRowIndex>0){
   this.clearKeyFromCurrentIndex()
+  this.palavra = this.palavra.substring(0, this.palavra.length - 1)
   }
   
   return
 }
 
+
+
 //enter pressed
 if(key.toUpperCase()==='ENTER'){
   if(this.currentRowIndex===9&&this.rowIndex!==9){ 
     //manda para back
-    this.WordService.getColors(this.palavra)
-    
+    this.WordService.getColors(this.palavra).subscribe((data: Array<String>) => {
+      let cores = data;
+      console.log('cores', cores)
 
-    this.rowIndex++
-    this.currentRowIndex=0
+      let acertou = true;
+
+      cores.forEach((value, i) => {
+        if(value==="Verde"){
+          this.boxes[this.rowIndex][i].class = 'childCorrectTileAndPosition';
+        }else{
+          acertou = false;
+        }
+        if(value==="Amarelo"){
+          this.boxes[this.rowIndex][i].class = 'childCorrectTile';
+        }
+      });
+
+      if(acertou===true){
+        //desce tela (felipe)
+      }
+      
+      this.rowIndex++
+      this.currentRowIndex=0
+      this.palavra = ""
+    })
+
+    
   }
   if(this.currentRowIndex==9&&this.rowIndex==9){
     this.colorTable()
   }
   
+  
+
   return
 }
 
@@ -110,12 +137,6 @@ if(key.length>1){
 
 //normal pressed
     var classe=''
-    if(key==='a'){
-      classe='childCorrectTile'
-    }
-    if(this.rowIndex===1){
-      classe='childCorrectTileAndPosition'
-    }
 
     if(this.currentRowIndex<9&&this.rowIndex<10){
     this.boxes[this.rowIndex][this.currentRowIndex]={class: classe,key:key};
